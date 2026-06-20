@@ -15,7 +15,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
 
       - name: Install dependencies
@@ -31,6 +31,6 @@ jobs:
         run: npm run build
         env:
           DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/traceform"
-          AUTH_SECRET: "ci-test-secret-for-build-only"
+          AUTH_SECRET: "ci-test-secret-for-build-only-not-for-production"
           AUTH_RESEND_KEY: "re_placeholder_not_used_at_buildtime"
           AUTH_EMAIL_FROM: "noreply@example.com"
