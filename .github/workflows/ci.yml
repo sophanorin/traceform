@@ -9,6 +9,11 @@ on:
 jobs:
   ci:
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/traceform"
+      AUTH_SECRET: "ci-test-secret-for-build-only-not-for-production"
+      AUTH_RESEND_KEY: "re_placeholder_not_used_at_buildtime"
+      AUTH_EMAIL_FROM: "noreply@example.com"
 
     steps:
       - uses: actions/checkout@v4
@@ -29,8 +34,3 @@ jobs:
 
       - name: Build
         run: npm run build
-        env:
-          DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/traceform"
-          AUTH_SECRET: "ci-test-secret-for-build-only-not-for-production"
-          AUTH_RESEND_KEY: "re_placeholder_not_used_at_buildtime"
-          AUTH_EMAIL_FROM: "noreply@example.com"
